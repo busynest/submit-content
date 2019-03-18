@@ -1,0 +1,41 @@
+{
+  "name": "submit-content",
+  "version": "0.0.1",
+  "homepage": "https://github.com/busynest/contractors/#readme",
+  "author": "Jack Markiewicz <jack.solutionbox@gmail.com>",
+  "license": "MIT",
+  "main": "application-shell.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/busynest/contractors.git"
+  },
+  "bugs": {
+    "url": "https://github.com/busynest/contractors/issues"
+  },
+  "keywords": [
+    "contractors",
+    "construction",
+    "center",
+    "contract",
+    "job",
+    "bid"
+  ],
+  "flat": true,
+  "private": true,
+  "scripts": {
+    "start": "polymer serve",
+    "build": "npm run build:prpl-server && npm run build:static",
+    "build:prpl-server": "polymer build --auto-base-path && rm -rf server/build && mv build server/ && renamer --find node_modules --replace node_assets 'server/build/**' && replace node_modules node_assets server/build -r -s",
+    "build:static": "polymer build",
+    "serve:prpl-server": "prpl-server --root server/build",
+    "serve:static": "polymer serve --port 5000 build/es5-bundled"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.2.7",
+    "lit-element": "^2.0.1",
+    "lit-html": "^1.0.0",
+    "pwa-helpers": "^0.9.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  }
+}
